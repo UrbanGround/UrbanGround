@@ -1,0 +1,7 @@
+imageio>=2.37,<3
+imageio-ffmpeg>=0.6,<1
+numpy>=2.0,<3
+openai>=2.0,<3
+opencv-python-headless>=4.10,<5
+pillow>=11,<13
+requests>=2.32,<3

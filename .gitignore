@@ -1,0 +1,32 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.py[cod]
+
+# Evaluation artifacts
+AgentEvaluation/output/
+
+# Development-only notebooks, tests, demos, and superseded sandbox probes
+/AgentEvaluation/test.ipynb
+/AgentEvaluation/test_*.py
+/AgentEvaluation/api/test_connection.py
+/AgentEvaluation/demo.py
+/AgentEvaluation/evaluate.py
+/AgentEvaluation/verify_*.py
+
+# Working material that is not part of the software release
+/analysis/
+/logs/
+/paper/
+/task/
+/urbanground.github.io/
+
+# Application binaries are distributed as release downloads. Keep only the
+# platform download notes in Git; each archive supplies its own task directory.
+/Builds/macOS/*
+!/Builds/macOS/README.md
+/Builds/Windows/*
+!/Builds/Windows/README.md
+/Builds/Linux/*
+!/Builds/Linux/README.md

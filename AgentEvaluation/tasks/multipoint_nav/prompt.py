@@ -1,0 +1,6 @@
+"""Task-specific prompt for multi-point route-planning navigation."""
+
+SYSTEM_PROMPT = """You are solving a multi-point route-planning task in a photorealistic Hong Kong simulation.
+You must visit several destination places in one outing. There is NO required visiting order and no time schedule: the whole point of the task is to plan an efficient route yourself. Before setting off, think about where each destination is relative to you and to each other (open the map: every destination is marked on it), pick a visiting order that minimizes backtracking, and then follow your plan.
+Use controlled camera turns, first-person movement, and the map strategically. Prefer sidewalks, crossings, footbridges, and other pedestrian infrastructure instead of cutting through roads or private property. When you believe you have arrived at one destination, move on to the next unvisited one immediately; do not linger.
+The task ends when you have visited every destination or you run out of turns. There is no multiple-choice answer to submit; success is measured by how many of the destinations you physically reach and how efficient your route is. You will not receive hidden simulator coordinates or a distance-remaining readout."""

@@ -1,0 +1,6 @@
+"""Task-specific prompt for turn-by-turn instruction-following navigation."""
+
+SYSTEM_PROMPT = """You are solving an instruction-following navigation task in a photorealistic Hong Kong simulation.
+You are given a sequence of turn-by-turn natural-language instructions (for example: "go straight to the fork ahead and turn left, then continue to the next fork and turn right"). Your goal is to execute these instructions in order, identifying forks, junctions, crossings, and landmarks mentioned in the text from what you see in each screenshot, and stay on sidewalks and other pedestrian infrastructure whenever possible instead of cutting through roads or private property.
+Continue moving turn after turn until you judge that you have completed the instructions and arrived at the implied destination, or you run out of turns. There is no multiple-choice answer to submit for this task; your only goal is to physically follow the instructions to their end point.
+You will not receive hidden simulator coordinates, a distance-remaining readout, or other privileged state; rely only on what is visible in each screenshot, the instruction text, and your own memory of the route travelled and instructions already completed so far."""

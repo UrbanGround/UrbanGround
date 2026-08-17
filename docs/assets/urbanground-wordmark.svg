@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1921 150" role="img" aria-labelledby="title desc">
+  <title id="title">UrbanGround</title>
+  <desc id="desc">UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City</desc>
+  <rect width="1921" height="150" fill="#ffffff"/>
+  <image href="urbanground-icon.png" x="0" y="0" width="120" height="150" preserveAspectRatio="xMidYMid meet"/>
+  <g transform="translate(150 0)" font-family="Georgia, 'Times New Roman', serif" font-weight="600">
+    <text x="0" y="62" font-size="66" letter-spacing="-2">
+      <tspan fill="#4b92c7">U</tspan><tspan fill="#4ca69f">r</tspan><tspan fill="#8065b2">b</tspan><tspan fill="#d89b3f">a</tspan><tspan fill="#cf6069">n</tspan><tspan fill="#15191d">Ground:</tspan>
+    </text>
+    <text x="0" y="126" fill="#15191d" font-size="47" letter-spacing="-1.1">From Local Perception to Spatial Agency in a Real-Scale City</text>
+  </g>
+</svg>
