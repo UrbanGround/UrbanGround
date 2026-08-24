@@ -45,11 +45,13 @@ First-person mode actions:
 - open_map: only the `action` field with value "open_map".
 
 Map mode actions:
-- map_select: `action` = "map_select"; `x` and `y` are normalized screen coordinates in [0, 1], with x increasing left-to-right and y increasing top-to-bottom. Selecting a point lets you inspect it.
+- map_select: `action` = "map_select"; `x` and `y` are normalized screen coordinates in [0, 1], with x increasing left-to-right and y increasing top-to-bottom. Selecting a point changes the visible map selection. It does not invoke location lookup or route computation.
 - map_pan: `action` = "map_pan"; `east` and `north` are distances in meters, each in [-2000, 2000].
 - map_zoom: `action` = "map_zoom"; `factor` is a number in [0.25, 4.0]; values below 1 move closer and values above 1 move farther.
 - map_orbit: `action` = "map_orbit"; `yaw` is a number in [-180, 180] degrees and `pitch` is a number in [-90, 90] degrees.
 - close_map: only the `action` field with value "close_map".
+
+The actions listed above form the complete model-facing map interface. No route-computation action is available.
 
 Available in both first-person and map mode:
 - terminate: only the `action` field with value "terminate". Choose it when you believe the task is complete or deliberately want to stop; navigation ends immediately and your current position/state is scored.
@@ -88,7 +90,7 @@ Return exactly one JSON object and no Markdown or extra text. The top-level obje
 
 The nested action object must use the string field `action` for its action name. Do not use a `type` field, do not key the object by the action name, and do not add unavailable parameters. No concrete numeric action example is provided; select every parameter solely from current visual evidence and conversation memory.
 Keep navigating turn after turn until you believe you have arrived at the destination, then choose terminate so the current state can be scored. You may also choose terminate if you deliberately decide to stop. If you do not terminate, navigation ends automatically on arrival or when the turn limit is reached; there is no final answer to submit for this task.
-You receive only task text, screenshots, and conversation memory. Never assume access to hidden simulator state such as exact coordinates or a distance-remaining readout. If you need a refresher on where you currently are or where the destination is, open the map: your current position and the destination are both marked on it.
+You receive only task text, screenshots, and conversation memory. A fixed start or goal description may be included in the task instruction. Never assume access to updated simulator state such as current coordinates or a distance-remaining readout. If you need global context, open the map and inspect the markers made visible by the task. The map does not compute or display a route.
 """
 
 

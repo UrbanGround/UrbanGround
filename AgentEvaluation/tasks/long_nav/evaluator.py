@@ -9,7 +9,7 @@ from .prompt import SYSTEM_PROMPT
 
 
 class LongNavEvaluator(BaseNavEvaluator):
-    """Evaluate long-range navigation where the agent may use the map/navigate API."""
+    """Evaluate long-range navigation from first-person and map observations."""
 
     task_type = 2
     task_name = "LongNav"
@@ -22,8 +22,8 @@ class LongNavEvaluator(BaseNavEvaluator):
             "[Long-Range Navigation Task]\n"
             f"Start: {format_geo_point(self.task['startPoint'])}\n"
             f"Goal:  {format_geo_point(self.task['endPoint'])}\n\n"
-            "The destination is far away. "
-            "You may use the navigation API to query a route and follow it."
+            "The destination is far away. Use first-person observations and the interactive "
+            "map to determine and execute a route. No computed or highlighted route is available."
         )
 
     def task_specific_metrics(self) -> dict[str, Any]:

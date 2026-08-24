@@ -23,8 +23,8 @@ class ShortNavEvaluator(BaseNavEvaluator):
             f"Start: {format_geo_point(self.task['startPoint'])}\n"
             f"Goal:  {format_geo_point(self.task['endPoint'])}\n\n"
             "The start and end points are within visual range, so navigating purely by "
-            "observation is usually fastest, but you may use the map and navigate action "
-            "if you find it helpful."
+            "observation is usually fastest, but you may inspect the map if you find it "
+            "helpful. No computed route is available."
         )
 
     def task_specific_metrics(self) -> dict[str, Any]:
