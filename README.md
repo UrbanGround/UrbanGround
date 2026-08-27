@@ -290,9 +290,9 @@ avatars; each remains subject to its upstream license.
 @article{ju2026urbanground,
   title   = {UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City},
   author  = {Ju, Tianjie and Wu, Zheng and Sun, Yueqing and Cui, Yuhan and Li, Bobo and
-             Wu, Shengqiong and Cheng, Pengzhou and Zhao, Haodong and Ma, Xinbei and
-             Fei, Hao and Li, Kunling and Lee, Mong-Li and Hsu, Wynne and Gu, Qi and
-             Liu, Gongshen and Zhang, Zhuosheng},
+             Wu, Shengqiong and Cheng, Pengzhou and Zhao, Haodong and Wu, Zongru and 
+             Ma, Xinbei and Zhang, Doris and Li, Kunling and Lee, Mong-Li and Hsu, Wynne and 
+             Fei, Hao and Gu, Qi and Liu, Gongshen and Zhang, Zhuosheng},
   year    = {2026}
 }
 ```
