@@ -8,6 +8,19 @@
   <a href="#application-downloads"><strong>App Download</strong></a>
   &nbsp;&nbsp;&middot;&nbsp;&nbsp;
   <a href="#citation"><strong>Paper &amp; Citation</strong></a>
+  &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+  <a href="LICENSE"><strong>MIT License</strong></a>
+</p>
+
+<p align="center">
+  <strong>English</strong> &middot;
+  <a href="docs/i18n/README_zh.md">简体中文</a> &middot;
+  <a href="docs/i18n/README_fr.md">Français</a> &middot;
+  <a href="docs/i18n/README_zh-Hant.md">繁體中文</a> &middot;
+  <a href="docs/i18n/README_ja.md">日本語</a> &middot;
+  <a href="docs/i18n/README_ko.md">한국어</a> &middot;
+  <a href="docs/i18n/README_ar.md">العربية</a> &middot;
+  <a href="docs/i18n/README_ru.md">Русский</a>
 </p>
 
 <table>
@@ -290,9 +303,13 @@ avatars; each remains subject to its upstream license.
 @article{ju2026urbanground,
   title   = {UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City},
   author  = {Ju, Tianjie and Wu, Zheng and Sun, Yueqing and Cui, Yuhan and Li, Bobo and
-             Wu, Shengqiong and Cheng, Pengzhou and Zhao, Haodong and Wu, Zongru and 
-             Ma, Xinbei and Zhang, Doris and Li, Kunling and Lee, Mong-Li and Hsu, Wynne and 
+             Wu, Shengqiong and Cheng, Pengzhou and Zhao, Haodong and Wu, Zongru and
+             Ma, Xinbei and Zhang, Doris and Li, Kunling and Lee, Mong-Li and Hsu, Wynne and
              Fei, Hao and Gu, Qi and Liu, Gongshen and Zhang, Zhuosheng},
   year    = {2026}
 }
 ```
+
+## License
+
+[MIT](LICENSE).
