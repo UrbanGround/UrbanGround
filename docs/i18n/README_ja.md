@@ -20,6 +20,7 @@
   <strong>日本語</strong> &middot;
   <a href="README_ko.md">한국어</a> &middot;
   <a href="README_ar.md">العربية</a> &middot;
+  <a href="README_de.md">Deutsch</a> &middot;
   <a href="README_ru.md">Русский</a>
 </p>
 

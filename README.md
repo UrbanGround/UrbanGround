@@ -20,6 +20,7 @@
   <a href="docs/i18n/README_ja.md">日本語</a> &middot;
   <a href="docs/i18n/README_ko.md">한국어</a> &middot;
   <a href="docs/i18n/README_ar.md">العربية</a> &middot;
+  <a href="docs/i18n/README_de.md">Deutsch</a> &middot;
   <a href="docs/i18n/README_ru.md">Русский</a>
 </p>
 
