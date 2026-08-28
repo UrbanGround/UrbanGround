@@ -7,14 +7,15 @@
   &nbsp;&nbsp;&middot;&nbsp;&nbsp;
   <a href="#アプリケーションのダウンロード"><strong>アプリをダウンロード</strong></a>
   &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-  <a href="#引用"><strong>論文・引用</strong></a>
-  &nbsp;&nbsp;&middot;&nbsp;&nbsp;
   <a href="../../LICENSE"><strong>MIT ライセンス</strong></a>
 </p>
 
 <p align="center">
   <a href="https://huggingface.co/papers/2608.27456">
     <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Paper%202608.27456-FFD21E?style=flat-square" alt="Hugging Face Paper 2608.27456">
+  </a>
+  <a href="https://arxiv.org/abs/2608.27456">
+    <img src="https://img.shields.io/badge/arXiv-2608.27456-b31b1b?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv 2608.27456">
   </a>
 </p>
 
@@ -302,13 +303,14 @@ Microsoft Rocketbox のアバターが含まれており、それぞれに提供
 ## 引用
 
 ```bibtex
-@article{ju2026urbanground,
-  title   = {UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City},
-  author  = {Ju, Tianjie and Wu, Zheng and Sun, Yueqing and Cui, Yuhan and Li, Bobo and
-             Wu, Shengqiong and Cheng, Pengzhou and Zhao, Haodong and Wu, Zongru and
-             Ma, Xinbei and Zhang, Doris and Li, Kunling and Lee, Mong-Li and Hsu, Wynne and
-             Fei, Hao and Gu, Qi and Liu, Gongshen and Zhang, Zhuosheng},
-  year    = {2026}
+@misc{ju2026urbangroundlocalperceptionspatial,
+      title={UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City},
+      author={Tianjie Ju and Zheng Wu and Yueqing Sun and Yuhan Cui and Bobo Li and Shengqiong Wu and Pengzhou Cheng and Haodong Zhao and Zongru Wu and Xinbei Ma and Doris Zhang and Kunling Li and Mong-Li Lee and Wynne Hsu and Hao Fei and Qi Gu and Gongshen Liu and Zhuosheng Zhang},
+      year={2026},
+      eprint={2608.27456},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2608.27456},
 }
 ```
 
