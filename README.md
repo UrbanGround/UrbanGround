@@ -13,6 +13,12 @@
 </p>
 
 <p align="center">
+  <a href="https://huggingface.co/papers/2608.27456">
+    <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Paper%202608.27456-FFD21E?style=flat-square" alt="Hugging Face Paper 2608.27456">
+  </a>
+</p>
+
+<p align="center">
   <strong>English</strong> &middot;
   <a href="docs/i18n/README_zh.md">简体中文</a> &middot;
   <a href="docs/i18n/README_fr.md">Français</a> &middot;
