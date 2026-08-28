@@ -3,11 +3,15 @@
 </p>
 
 <p align="center">
-  <a href="https://urbanground.github.io"><strong>Project Page</strong></a>
-  &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-  <a href="#application-downloads"><strong>App Download</strong></a>
-  &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-  <a href="LICENSE"><strong>MIT License</strong></a>
+  <a href="https://urbanground.github.io">
+    <img src="https://img.shields.io/badge/Project-Page-0969da?style=flat-square&logo=githubpages&logoColor=white" alt="Project Page">
+  </a>
+  <a href="#application-downloads">
+    <img src="https://img.shields.io/badge/App-Download-2ea44f?style=flat-square&logo=github&logoColor=white" alt="App Download">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-8a2be2?style=flat-square&logo=opensourceinitiative&logoColor=white" alt="MIT License">
+  </a>
 </p>
 
 <p align="center">

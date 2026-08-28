@@ -3,11 +3,15 @@
 </p>
 
 <p align="center">
-  <a href="https://urbanground.github.io"><strong>프로젝트 페이지</strong></a>
-  &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-  <a href="#애플리케이션-다운로드"><strong>앱 다운로드</strong></a>
-  &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-  <a href="../../LICENSE"><strong>MIT 라이선스</strong></a>
+  <a href="https://urbanground.github.io">
+    <img src="https://img.shields.io/badge/Project-Page-0969da?style=flat-square&logo=githubpages&logoColor=white" alt="프로젝트 페이지">
+  </a>
+  <a href="#애플리케이션-다운로드">
+    <img src="https://img.shields.io/badge/App-Download-2ea44f?style=flat-square&logo=github&logoColor=white" alt="앱 다운로드">
+  </a>
+  <a href="../../LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-8a2be2?style=flat-square&logo=opensourceinitiative&logoColor=white" alt="MIT 라이선스">
+  </a>
 </p>
 
 <p align="center">
