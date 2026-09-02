@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from api import LLMClient, LLMConfig
+from api import DEFAULT_HISTORY_FRAMES, LLMClient, LLMConfig
 from benchmark_scoring import summarize_score_outcomes
 from sandbox import (
     AgentClient,
@@ -75,6 +75,7 @@ class RunOptions:
     scene_poll_interval: float = 5.0
     scene_ready_consecutive_checks: int = 2
     scene_edge_density_threshold: float = 0.010
+    history_frames: int = DEFAULT_HISTORY_FRAMES
 
 
 def safe_model_directory_name(model: str) -> str:
@@ -212,6 +213,7 @@ def run_one_task(task_run: TaskRunSpec | Path, options: RunOptions) -> dict[str,
         raise ValueError(f"Task {task_id} has unsupported type {task['type']}")
     config = TaskEpisodeConfig(
         max_steps=options.max_steps,
+        history_frames=options.history_frames,
         post_teleport_wait_seconds=options.post_teleport_wait,
         save_frames=options.save_frames,
         save_video=options.save_video,
@@ -419,6 +421,8 @@ def parse_args() -> argparse.Namespace:
                              "(non-null metrics) in --output-dir/<model>/<task_id>/ are skipped "
                              "and only previously-failed or never-evaluated tasks are (re-)run. "
                              "Pass --force-rerun to re-run every selected task regardless.")
+    parser.add_argument("--history-frames", type=int, default=DEFAULT_HISTORY_FRAMES,
+                        help="Historical screenshots in model context (default: 20; 0: disabled)")
     parser.add_argument("--save-frames", action="store_true",
                         help="Keep source JPEG frames after encoding (default: video only)")
     parser.add_argument("--no-save-video", action="store_true")
@@ -436,7 +440,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--scene-edge-density-threshold", type=float, default=0.010,
                         help="Canny edge-density threshold above which a screenshot is "
                              "considered fully loaded (default: 0.010; see tasks/scene_readiness.py)")
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.history_frames < 0:
+        parser.error("--history-frames must be non-negative")
+    return args
 
 
 def main() -> None:
@@ -495,6 +502,7 @@ def main() -> None:
         options = RunOptions(
             model=model,
             max_steps=args.max_steps,
+            history_frames=args.history_frames,
             build_folder=build_folder,
             exe_path=args.exe_path,
             server_url=args.server_url,

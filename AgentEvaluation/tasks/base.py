@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from api import (
+    DEFAULT_HISTORY_FRAMES,
     NAV_ACTION_SPACE_PROMPT,
     NAV_REACT_PROTOCOL_PROMPT,
     LLMClient,
@@ -59,6 +60,7 @@ class TaskEpisodeConfig:
     scene_poll_interval_seconds: float = 5.0
     scene_ready_consecutive_checks: int = 2
     scene_edge_density_threshold: float = DEFAULT_EDGE_DENSITY_THRESHOLD
+    history_frames: int = DEFAULT_HISTORY_FRAMES
 
 
 # QA task types (LandmarkQA/OrientationQA/SpatialQA) use qaStartPoint + four-choice qaOptions.
@@ -679,6 +681,7 @@ class BaseTaskEvaluator(_EpisodeEvaluatorBase):
             task_prompt=self.system_prompt,
             task_description=format_question(self.task),
             retry_count=self.config.retry_count,
+            history_frames=self.config.history_frames,
         )
 
     def _start_point(self) -> dict[str, Any]:
@@ -756,6 +759,7 @@ class BaseTaskEvaluator(_EpisodeEvaluatorBase):
                     "max_steps": self.config.max_steps,
                     "action_timeout": self.config.action_timeout,
                     "retry_count": self.config.retry_count,
+                    "history_frames": self.config.history_frames,
                     "video_fps": self.config.video_fps,
                     "action_sample_interval_seconds": self.config.action_sample_interval_seconds,
                 },
@@ -784,6 +788,7 @@ class BaseNavEvaluator(_EpisodeEvaluatorBase):
             task_prompt=self.system_prompt,
             task_description=self.task_instructions(),
             retry_count=self.config.retry_count,
+            history_frames=self.config.history_frames,
             action_space_prompt=NAV_ACTION_SPACE_PROMPT,
             react_protocol_prompt=NAV_REACT_PROTOCOL_PROMPT,
         )
@@ -941,6 +946,7 @@ class BaseNavEvaluator(_EpisodeEvaluatorBase):
                     "max_steps": self.config.max_steps,
                     "action_timeout": self.config.action_timeout,
                     "retry_count": self.config.retry_count,
+                    "history_frames": self.config.history_frames,
                     "video_fps": self.config.video_fps,
                     "action_sample_interval_seconds": self.config.action_sample_interval_seconds,
                     "arrival_radius_meters": self.config.arrival_radius_meters,

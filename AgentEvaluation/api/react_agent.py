@@ -1,13 +1,16 @@
-"""Reusable visual ReAct agent with text memory and privileged-state isolation."""
+"""Reusable visual ReAct agent with bounded visual memory and privileged-state isolation."""
 
 from __future__ import annotations
 
+from copy import deepcopy
 from dataclasses import dataclass, field
 from typing import Any, Callable
 
 from .llm_client import LLMClient, LLMResponseError
 
 ActionValidator = Callable[[Any], dict[str, Any]]
+
+DEFAULT_HISTORY_FRAMES = 20
 
 ACTION_SPACE_PROMPT = """Action space (choose exactly one action per exploration turn).
 
@@ -117,22 +120,40 @@ class FinalAnswer:
 
 @dataclass
 class ConversationMemory:
-    """Text-only episodic memory; historical images are summarized by model responses."""
+    """Conversation history with a bounded screenshot window."""
 
     system_prompt: str
+    history_frames: int = DEFAULT_HISTORY_FRAMES
     messages: list[dict[str, Any]] = field(init=False)
 
     def __post_init__(self) -> None:
+        if self.history_frames < 0:
+            raise ValueError("history_frames must be non-negative")
         self.messages = [{"role": "system", "content": self.system_prompt}]
 
     def request_messages(self, current_user_message: dict[str, Any]) -> list[dict[str, Any]]:
         return [*self.messages, current_user_message]
 
-    def remember_turn(self, user_text: str, assistant_text: str) -> None:
+    def remember_turn(self, user_text: str | dict[str, Any], assistant_text: str) -> None:
+        user_message = ({"role": "user", "content": user_text}
+                        if isinstance(user_text, str) else deepcopy(user_text))
         self.messages.extend([
-            {"role": "user", "content": user_text},
+            user_message,
             {"role": "assistant", "content": assistant_text},
         ])
+        image_turns = [
+            index for index, message in enumerate(self.messages)
+            if message["role"] == "user" and isinstance(message["content"], list)
+            and any(part.get("type") == "image_url" for part in message["content"])
+        ]
+        for index in image_turns[:max(0, len(image_turns) - self.history_frames)]:
+            self.messages[index] = {
+                "role": "user",
+                "content": "\n".join(
+                    part["text"] for part in self.messages[index]["content"]
+                    if part.get("type") == "text"
+                ),
+            }
 
 
 class VisualReActAgent:
@@ -145,14 +166,15 @@ class VisualReActAgent:
 
     def __init__(self, llm: LLMClient, task_prompt: str, task_description: str,
                  retry_count: int = 2, action_space_prompt: str = ACTION_SPACE_PROMPT,
-                 react_protocol_prompt: str = REACT_PROTOCOL_PROMPT):
+                 react_protocol_prompt: str = REACT_PROTOCOL_PROMPT,
+                 history_frames: int = DEFAULT_HISTORY_FRAMES):
         self.llm = llm
         self.task_description = task_description.strip()
         self.retry_count = retry_count
         system_prompt = "\n\n".join((
             task_prompt.strip(), action_space_prompt.strip(), react_protocol_prompt.strip()
         ))
-        self.memory = ConversationMemory(system_prompt)
+        self.memory = ConversationMemory(system_prompt, history_frames=history_frames)
         self._task_introduced = False
 
     @property
@@ -199,7 +221,7 @@ class VisualReActAgent:
                 if not reason:
                     raise LLMResponseError("reason must be a non-empty string")
                 action = validate_action(payload.get("action"))
-                self.memory.remember_turn(user_text, raw)
+                self.memory.remember_turn(image_message, raw)
                 self._task_introduced = True
                 return ReActStep(
                     observation=observation,
@@ -226,7 +248,7 @@ class VisualReActAgent:
         )
 
     def answer(self, screenshot: bytes, parse_answer: Callable[[Any], Any]) -> FinalAnswer:
-        """Answer from the final screenshot and the complete text conversation memory."""
+        """Answer from the final screenshot and conversation memory."""
         user_text = (
             "Exploration is complete. Use the attached final screenshot and your complete "
             "conversation memory to answer the original task.\n\n"
@@ -241,5 +263,5 @@ class VisualReActAgent:
             raise LLMResponseError("answer must be exactly one of A, B, C, or D")
         if not reason:
             raise LLMResponseError("final reason must be a non-empty string")
-        self.memory.remember_turn(user_text, raw)
+        self.memory.remember_turn(image_message, raw)
         return FinalAnswer(answer=answer, reason=reason, raw_response=raw)
