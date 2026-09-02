@@ -18,6 +18,9 @@
   <a href="https://huggingface.co/papers/2608.27456">
     <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Paper%202608.27456-FFD21E?style=flat-square" alt="Hugging Face Paper 2608.27456">
   </a>
+  <a href="https://huggingface.co/datasets/jometeorie/urbanground-tasks">
+    <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-FFD21E?style=flat-square" alt="UrbanGround Dataset on Hugging Face">
+  </a>
   <a href="https://arxiv.org/abs/2608.27456">
     <img src="https://img.shields.io/badge/arXiv-2608.27456-b31b1b?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv 2608.27456">
   </a>
@@ -183,6 +186,16 @@ at `http://127.0.0.1:8081` by default.
 The paper uses a five-level collection of experimental tasks to analyze and validate agent
 behavior in the environment. It is released as experimental data with the application rather
 than as a separate software component.
+
+The complete task dataset is also available on
+[Hugging Face](https://huggingface.co/datasets/jometeorie/urbanground-tasks) for browser-based
+exploration and direct loading with the `datasets` library:
+
+```python
+from datasets import load_dataset
+
+dataset = load_dataset("jometeorie/urbanground-tasks")
+```
 
 | Level | Capability | Task types |
 | --- | --- | --- |
